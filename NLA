@@ -1,0 +1,12 @@
+screen mode id:i:1
+authentication level:i:0
+prompt for credentials:i:1
+full address:s:<Remote_Computer_IP_or_Hostname>
+
+
+Save the file with a ".rdp" extension. For example, you can name it "NonNLAConnection.rdp."
+
+Start-Process -FilePath "mstsc.exe" -ArgumentList "$env:USERPROFILE\Documents\NonNLAConnection.rdp"
+
+
+This command will open the RDP connection using the settings specified in the ".rdp" file, which includes disabling NLA.
