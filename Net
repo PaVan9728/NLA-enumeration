@@ -1,0 +1,96 @@
+TLS 1.0 Protocol Detection: 
+CVSS : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+Medium
+Description
+TLS 1.0 Protocol Detection is a process that identifies the use of TLS (Transport Layer Security) version 1.0 within network communications. TLS 1.0, an early iteration of the TLS protocol, has become obsolete and carries known vulnerabilities including susceptibility to various attacks such as BEAST and POODLE
+Risk:
+TLS 1.0 uses outdated encryption algorithms, which are vulnerable to known attacks, can be exploited to decipher encrypted data. TLS 1.0 supports weak cipher suites, which may not provide adequate security against modern cryptographic attacks
+
+Observation
+It is observed that the continued use of TLS 1.0 presents a significant and avoidable security risk in modern network environments. Systems relying on TLS 1.0 are susceptible to known vulnerabilities and attacks, making them an attractive target for malicious actors seeking to exploit weak encryption protocols
+
+Mitigation: It is recommended to disable TLS 1.0 and use TLS 1.2 instead
+
+TLS 1.1 Protocol Detection:
+CVSS : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N
+Low
+Description:
+TLS 1.1 Protocol Detection is a security assessment process focused on identifying the use of the TLS (Transport Layer Security) version 1.1 within network communications. TLS 1.1 is an improvement over its predecessor, TLS 1.0, addressing several security vulnerabilities.
+Similar to other TLS versions, padding oracle attacks are a risk with TLS 1.1. Attackers can potentially exploit vulnerabilities in padding schemes to recover plaintext data.
+Risk:
+Attackers may exploit vulnerabilities in TLS 1.1 to intercept and eavesdrop on data transmitted between a client and server. This can result in the exposure of sensitive information, such as login credentials, personal data, or financial transactions.
+
+Observation:
+TLS 1.1, like any cryptographic protocol, still carries inherent vulnerabilities that may pose threats to data security. 
+
+Mitigation:
+Mitigation: It is recommended to disable TLS 1.0 and use TLS 1.2 or TLS 1.3 instead
+HSTS Missing from HTTPS Server:
+CVSS Score : CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N
+Low
+Description:
+HSTS is an optional response header
+that can be configured on the server to instruct the browser to only communicate via HTTPS. The lack of HSTS allows downgrade attacks, SSL-stripping man-in-the-middle attacks, and weakens cookie-hijacking protections.
+
+The remote web server is not enforcing HSTS.
+Risk: Attacker intercept and tamper with communication between the client and the server, potentially leading to data theft, unauthorized access, or other malicious activities.
+
+Observation:
+Without HSTS, there is an increased risk of man-in-the-middle attacks, data exposure, and the compromise of sensitive information.
+
+Mitigation:
+It is recommended to configure the remote web server to use HSTS
+Include the "max-age" directive in the HSTS header to specify the duration for which the HSTS policy is in effect.
+
+
+SSL Certificate cannot be trusted
+CVSS : CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N
+Low
+
+Description:
+The server's X.509 certificate lacks trustworthiness. The certificate chain presented by the server may not have a clear lineage from a known public certificate authority. This can happen in cases where the top of the chain is not recognized.
+
+Moreover, the certificate chain may include a signature that does not align with the certificate's information or is unverifiable. In instances of erroneous signatures, the remedy involves obtaining the certificate with the flawed signature to be re-validated by its issuing authority. Unverifiable signatures can result from the certificate's issuer utilizing an unsupported or unrecognized signing algorithm.
+
+Risk: 
+When the SSL Certificate cannot be trusted, the data transmitted over the connection could be vulnerable to eavesdropping and interception
+
+Observation:
+It is observed that the RDP and other services does not have a proper SSL Certificate from a know CA authority.
+
+SSL Certificate with Wrong Hostname:
+CVSS : CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N
+Low
+Description:
+An SSL Certificate with the wrong hostname issue arises when the Common Name (CN) or Subject Alternative Name (SAN) specified in the certificate does not match the hostname of the website or server to which it is applied.
+
+Risk:
+A hostname mismatch could potentially indicate a man-in-the-middle attack, where an attacker intercepts and relays data between the user and the server
+Observation:
+It is observed that the RDP and other services does not have a proper SSL Certificate from a know CA authority.
+
+SSL Self Signed Certificate
+CVSS : CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N
+Low
+Description: The X.509 certificate chain for this service is not signed by a recognized certificate authority. Unlike certificates issued by trusted Certificate Authorities (CAs), self-signed certificates do not undergo the same rigorous verification process.
+
+Risk:
+Attackers can exploit self-signed certificates to impersonate a legitimate website, leading users to unknowingly interact with fraudulent sites. This can result in the compromise of sensitive information.
+
+Observation:
+It is observed that the RDP and other services does not have a proper SSL Certificate from a know CA authority.
+
+SSL RC4 Cipher suites supported
+CVSS : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N
+Low
+Description:
+SSL RC4 Cipher Suites Supported refers to the presence of cryptographic cipher suites using the RC4 encryption algorithm in a Secure Sockets Layer (SSL) or Transport Layer Security (TLS) configuration. RC4 was once a widely-used encryption method to secure data in transit over the internet. However, it has since been deprecated and is considered insecure due to a range of vulnerabilities.
+
+Risk:
+The RC4 algorithm is vulnerable to bias-based attacks that can be exploited to intercept and decrypt data transmitted over a connection. Attackers could potentially eavesdrop on sensitive information.
+
+Observation:
+It is observed that the above hosts supports SSL RC4 cipher suites.
+
+
+
